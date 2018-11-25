@@ -5,6 +5,7 @@ import com.springframework.domain.UnitOfMeasure;
 import com.springframework.repositories.CategoryRepository;
 import com.springframework.repositories.UnitOfMeasureRepository;
 import com.springframework.services.RecipeService;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,7 @@ import java.util.Optional;
 
 import static org.slf4j.LoggerFactory.getLogger;
 
+@Slf4j
 @Controller
 public class IndexController {
 
@@ -28,6 +30,7 @@ public class IndexController {
 
     @RequestMapping({"", "/", "/index"})
     public String getIndexPage(Model model) {
+        log.debug("Creating Index Page");
         model.addAttribute("recipes", recipeService.getRecipes());
 
         return "index";
